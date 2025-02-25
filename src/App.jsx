@@ -44,7 +44,7 @@ function App() {
             <input type="text" value={editValue} onChange={(e) => setEditValue(e.target.value)} />
           <div className='btn'>
             <button className='button' onClick={saveHandle}>Save</button>
-            <button className='button' onClick={() => deleteHandle(i.id)}>Cancel</button><br />
+            <button className='button' onClick={cancelHandle}>Cancel</button><br />
           </div>
         </div> ) :  (<div className="button-container">
           <label>
@@ -91,6 +91,10 @@ function saveHandle(){
   setEditId(null);
   setEditValue("");
  
+}
+function cancelHandle(){
+  setEditId(null);
+  setEditValue("");
 }
 
   return (
