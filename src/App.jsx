@@ -51,7 +51,7 @@ function App() {
             <input type="checkbox" checked={i.completed} onChange={() => toggleHandle(i.id)} />{i.title}</label>
           <div className='btn'>
             <button className='button' onClick={()=>editHandle(i.id,i.title)}>Edit</button>
-            <button className='button' onClick={() => deleteHandle(i.id)}>Delete</button><br />
+            <button  disabled={i.completed ? false : true} className={i.completed ? 'button' : 'button-disabled'} onClick={() => deleteHandle(i.id)}>Delete</button><br />
           </div>
         </div>)}
        

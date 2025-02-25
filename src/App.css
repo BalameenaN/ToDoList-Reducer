@@ -57,3 +57,14 @@ h1 {
   color: white;
 
 }
+.button-disabled{
+  background-color: rgb(240, 97, 97);
+  margin: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 5px;
+  width: 50px;
+  color: white;
+  opacity: 0.5;
+  cursor: not-allowed;
+}
