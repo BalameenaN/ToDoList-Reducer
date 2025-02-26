@@ -18,8 +18,8 @@ function reducer(state, action) {
 
     case "Add":
       return [{ userId: state[0].userId, id: state.length + 1, title: action.payload, completed: false }, ...state];
-    
-    case "Edit": 
+
+    case "Edit":
       const newState = state.map((s) => s.id === action.payload.id ? { ...s, title: action.payload.title } : s);
       return newState;
   }
@@ -39,22 +39,23 @@ function App() {
     // console.log(i.title)
     return (
       <>
-      { i.id === editId ? (<div className="button-container">
-         
-            <input type="text" value={editValue} onChange={(e) => setEditValue(e.target.value)} />
+        {/*Condition to render when edit button is pressed*/ }
+        {i.id === editId ? (<div className="button-container">
+
+          <input type="text" value={editValue} onChange={(e) => setEditValue(e.target.value)} />
           <div className='btn'>
             <button className='button' onClick={saveHandle}>Save</button>
             <button className='button' onClick={cancelHandle}>Cancel</button><br />
           </div>
-        </div> ) :  (<div className="button-container">
+        </div>) : (<div className="button-container">
           <label>
             <input type="checkbox" checked={i.completed} onChange={() => toggleHandle(i.id)} />{i.title}</label>
           <div className='btn'>
-            <button className='button' onClick={()=>editHandle(i.id,i.title)}>Edit</button>
-            <button  disabled={i.completed ? false : true} className={i.completed ? 'button' : 'button-disabled'} onClick={() => deleteHandle(i.id)}>Delete</button><br />
+            <button className='button' onClick={() => editHandle(i.id, i.title)}>Edit</button>
+            <button disabled={i.completed ? false : true} className={i.completed ? 'button' : 'button-disabled'} onClick={() => deleteHandle(i.id)}>Delete</button><br />
           </div>
         </div>)}
-       
+
       </>)
   })
 
@@ -80,25 +81,25 @@ function App() {
     dispatch({ type: "Delete", payload: id })
 
   }
-  function editHandle(id,value){
+  function editHandle(id, value) {
     setEditId(id);
     setEditValue(value);
 
   }
 
-function saveHandle(){
-  dispatch({type:"Edit",payload:{id: editId, title: editValue}});
-  setEditId(null);
-  setEditValue("");
- 
-}
-function cancelHandle(){
-  setEditId(null);
-  setEditValue("");
-}
+  function saveHandle() {
+    dispatch({ type: "Edit", payload: { id: editId, title: editValue } });
+    setEditId(null);
+    setEditValue("");
+
+  }
+  function cancelHandle() {
+    setEditId(null);
+    setEditValue("");
+  }
 
   return (
-  
+
     <>
       <h1>ToDoList</h1>
       <div className='input-container'>
