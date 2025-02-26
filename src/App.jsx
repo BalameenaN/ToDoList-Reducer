@@ -40,14 +40,14 @@ function App() {
     return (
       <>
         {/*Condition to render when edit button is pressed*/ }
-        {i.id === editId ? (<div className="button-container">
+        {i.id === editId ? (<div key={i.id} className="button-container">
 
           <input type="text" value={editValue} onChange={(e) => setEditValue(e.target.value)} />
           <div className='btn'>
             <button className='button' onClick={saveHandle}>Save</button>
             <button className='button' onClick={cancelHandle}>Cancel</button><br />
           </div>
-        </div>) : (<div className="button-container">
+        </div>) : (<div key={i.id} className="button-container">
           <label>
             <input type="checkbox" checked={i.completed} onChange={() => toggleHandle(i.id)} />{i.title}</label>
           <div className='btn'>
